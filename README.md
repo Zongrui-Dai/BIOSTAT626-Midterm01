@@ -69,8 +69,24 @@ metalearner.
                        nfolds = 10
     )
 Each baselines model runs on the 10-fold cross-validation. The average results of each model's performance in validation dataset are listed below:
+Since I have fixed the random seed of each baselines and ensemble models, the results are reproducable. 
 
-![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/result.jpg)
+![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/result.jpg)
+
+(2) Final model - Stacked Ensemble model
+Taking the randomforest, gradient boosting, and Feedforward neural network trained above, a deeplearning (also feedforward neural network with default parameters) is trained as metalearner to conclude their result. The structure is listed below:
+
+        ensemble <- h2o.stackedEnsemble(x = x, 
+                                y = y, 
+                                training_frame = training_binary,
+                                base_models = list(Binary_dl, Binary_gbm, Binary_rf),
+                                metalearner_algorithm = 'deeplearning'
+                                )
+
+To better fit the model, here I do not use 10-fold cross-validation to train the ensemble model. The performance of this model is listed below:
+
+
+
 
 
 
