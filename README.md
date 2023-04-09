@@ -94,6 +94,6 @@ To better fit the model, here I do not use 10-fold cross-validation to train the
 
 
 ## Task.2 - Multiclass Classification
-
+![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Conv1d_LSTM.jpg)
 
 
