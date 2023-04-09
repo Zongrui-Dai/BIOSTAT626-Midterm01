@@ -70,7 +70,7 @@ metalearner.
     )
 Each baselines model runs on the 10-fold cross-validation. The average results of each model's performance in validation dataset are listed below:
 
-
+![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/result.jpg)
 
 
 
