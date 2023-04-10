@@ -94,8 +94,29 @@ To better fit the model, here I do not use 10-fold cross-validation to train the
 
 
 ## Task.2 - Multiclass Classification
+
+**1. Sequential Property in the activity**
+
+By ploting the outcome of training dataset, we can see a clear time-based pattern. Static postural transition(7) always work like a transition point between two different activity types. Although we should wonder whether this pattern exists in the testing dataset (since no one can make sure the testing dataset is shuffled or not), based on the final model, this time-based pattern appear again on the testing dataset. 
+
 ![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/trainingy.jpg)
 
+**2. Baseline models**
+
+For this task, I did several baseline model to classify the problem. There are three main types: **Ensemble based model, LSTM, Conv1d+LSTM**. 
+*Tips:* Training of some baseline models will be quite time-wasting (especially h2o.automl). So, I upload all these model on the github. 
+
+        ## R: Load h2o model and review it's performance
+        h2o.init()
+        saved_model <- h2o.loadModel('E:/Biostatistics Master/BIOSTAT626/Midterm1/Multi_gbm')
+        saved_model@model$cross_validation_metrics_summary
+
+**(1) Ensemble learning**
+
+**Why stakced ensemble learning is not choose as final model:** Based on the model above, we could easily find that some baselearner is overfitting. Since I didn't do any feature selection here, this result is expected. Choosing baselearners (GBM, RF, DL, DL+RF) as final model may have poor generalization ability since the performance on training dataset is deceptive. Also, the overfitting problem on baselearner will influence the stakced ensemble learning. If one baselearner is overfitting, metaleaner will ignore other models and put too much weight on that model.
+
+
+**3. Final model - 2Conv1D_LSTM**
 ![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Conv1d_LSTM.jpg)
 
 
