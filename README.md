@@ -97,7 +97,7 @@ To better fit the model, here I do not use 10-fold cross-validation to train the
 
 **1. Sequential Property in the activity**
 
-By ploting the outcome of training dataset, we can see a clear time-based pattern. Static postural transition(7) always work like a transition point between two different activity types. Although we should wonder whether this pattern exists in the testing dataset (since no one can make sure the testing dataset is shuffled or not), based on the final model, this time-based pattern appear again on the testing dataset. 
+By ploting the outcome of training dataset, we can see a clear time-based pattern. Static postural transition(7) always work like a transition point between two different activity types. Although we should wonder whether this pattern exists in the testing dataset (since no one can make sure the testing dataset is shuffled or not), based on the final model, this time-based pattern appears again on the testing dataset. 
 
 ![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/trainingy.jpg)
 
@@ -115,6 +115,11 @@ For this task, I did several baseline model to classify the problem. There are t
 
 **Why stakced ensemble learning is not choose as final model:** Based on the model above, we could easily find that some baselearner is overfitting. Since I didn't do any feature selection here, this result is expected. Choosing baselearners (GBM, RF, DL, DL+RF) as final model may have poor generalization ability since the performance on training dataset is deceptive. Also, the overfitting problem on baselearner will influence the stakced ensemble learning. If one baselearner is overfitting, metaleaner will ignore other models and put too much weight on that model.
 
+**(2) LSTM/GRU/RNN**
+
+
+**(3) Conv1D+LSTM**
+Hard to become convergent. 
 
 **3. Final model - 2Conv1D_LSTM**
 ![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Conv1d_LSTM.jpg)
