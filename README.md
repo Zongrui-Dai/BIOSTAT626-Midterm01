@@ -104,7 +104,7 @@ By ploting the outcome of training dataset, we can see a clear time-based patter
 **2. Baseline models**
 
 For this task, I did several baseline model to classify the problem. There are three main types: **Ensemble based model, LSTM, Conv1d+LSTM**. 
-*Tips:* Training of some baseline models will be quite time-wasting (especially h2o.automl). So, I upload all these model on the github. 
+*Tips:* Training of some baseline models will be quite time consuming (especially h2o.automl). So, all these models are uploaded on the github. Using h2o.loadModel can reload them to R. 
 
         ## R: Load h2o model and review it's performance
         h2o.init()
@@ -115,8 +115,8 @@ For this task, I did several baseline model to classify the problem. There are t
 
 **Why stakced ensemble learning is not choose as final model:** Based on the model above, we could easily find that some baselearner is overfitting. Since I didn't do any feature selection here, this result is expected. Choosing baselearners (GBM, RF, DL, DL+RF) as final model may have poor generalization ability since the performance on training dataset is deceptive. Also, the overfitting problem on baselearner will influence the stakced ensemble learning. If one baselearner is overfitting, metaleaner will ignore other models and put too much weight on that model.
 
-**(2) LSTM/GRU/RNN**
-
+**(2) LSTM/BILSTM**
+By the Sequential Property in the training dataset, I decide to apply LSTM/BILSTM. 
 
 **(3) Conv1D+LSTM**
 Hard to become convergent. 
