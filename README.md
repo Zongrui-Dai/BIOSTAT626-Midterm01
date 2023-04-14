@@ -23,6 +23,8 @@ There are three baseline models in this task. They are randomforest, gradient bo
 The final is a stacked ensemble learning using randomforest, grandient boosting tree, and feedforward neural network as base models with neural network as
 metalearner. 
 
+**These models can be reproduced in the Task1_Ensemble_Learning.R. Run the whole code will return you the predictions for each model and ensemble**
+
 **1.Randomforest**
 
     Binary_rf <- h2o.randomForest(x = x,
@@ -91,8 +93,6 @@ To better fit the model, here I do not use 10-fold cross-validation to train the
 
 **Performance on the Leaderboard**: This stakced ensemble model achieves 100% accuracy on the testing dataset. The upload document is named as: binary_Ayakawhen.txt
 
-
-
 ## Task.2 - Multiclass Classification
 
 **1. Sequential Property in the activity**
@@ -108,10 +108,15 @@ For this task, I did several baseline model to classify the problem. There are t
 
         ## R: Load h2o model and review it's performance
         h2o.init()
-        saved_model <- h2o.loadModel('E:/Biostatistics Master/BIOSTAT626/Midterm1/Multi_gbm')
+        saved_model <- h2o.loadModel('ModelNames')
         saved_model@model$cross_validation_metrics_summary
 
 **(1) Ensemble learning**
+
+The baseline models here are much similar with the structure in the Task.1. Randomforest, gradient boosting tree,feedforward neural network are applied in this analysis. Also, stacked Ensemble learning and AutoMachine learning in H2o packages are applied. AutoML function will run several models in R and stakced them together. In this part, AutoMl is utilized 50 models and stakced them together. 
+
+**Results:**
+
 
 **Why stakced ensemble learning is not choose as final model:** Based on the model above, we could easily find that some baselearner is overfitting. Since I didn't do any feature selection here, this result is expected. Choosing baselearners (GBM, RF, DL, DL+RF) as final model may have poor generalization ability since the performance on training dataset is deceptive. Also, the overfitting problem on baselearner will influence the stakced ensemble learning. If one baselearner is overfitting, metaleaner will ignore other models and put too much weight on that model.
 
