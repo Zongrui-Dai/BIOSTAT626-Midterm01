@@ -146,7 +146,7 @@ The baseline models here are much similar with the structure in the Task.1. Rand
 
 **Why stakced ensemble learning is not choose as final model:** 
 
-Based on the model above, we could easily find that some baselearner is overfitting. Since I didn't do any feature selection here, this result is expected. Choosing baselearners (GBM, RF, DL, DL+RF) as final model may have poor generalization ability since the performance on training dataset is deceptive. Also, the overfitting problem on baselearner will influence the stakced ensemble learning. If one baselearner is overfitting, metaleaner will ignore other models and put too much weight on that model.
+Although the models above seem to perfectly solve the problem, the performance in the testing dataset is around 95.2%. So, these models may be overfitting on the training dataset. Since I didn't do any feature selection here, this result is expected. Choosing base learners (GBM, RF, DL, DL+RF) as a final model may have poor generalization ability since the performance on the training dataset is deceptive. Also, the overfitting problem on the base learner will influence the stacked ensemble learning. If one base learner is overfitting, the meta leaner will ignore other models and put too much weight on that model.
 
 **(2) LSTM/BILSTM**
 
