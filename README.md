@@ -3,7 +3,7 @@
 ## Fast reproduce: 
 *Tips:* LSTM/BILSTM training will be time consuming. You can directly load the model that I have already trained or you can reproduce my training process in the python code. 
 
-Task.1: 
+Task.1: <img src="https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/training_tSNE.png" align="right" height=350/>
 - [Ensemble learning](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.1/Task1_Ensemble_Learning.R)
 - [Trained Models](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/tree/main/Task.1/Models)
 
