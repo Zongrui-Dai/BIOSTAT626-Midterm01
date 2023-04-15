@@ -13,6 +13,7 @@ Task.2:
 - [Conv1d BILSTM Grid Search](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.2/Conv1d_BILSTM_Grid.py)
 - [Baselines H2o Model: Trained Model](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.2/Fast_Load_h2oModel.Rmd)
 - [Baselines H2o Model: Training Process](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.2/Training_Process_Ensemble.R)
+- [Trained Models in h5](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/tree/main/LSTM_Grid)
 
 ## Task.1 - Binary Classification
 
