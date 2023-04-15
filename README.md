@@ -4,12 +4,15 @@
 *Tips:* LSTM/BILSTM training will be time consuming. You can directly load the model that I have already trained or you can reproduce my training process in the python code. 
 
 Task.1: 
-- [Java](https://www.oracle.com/java/technologies/downloads/)
-- [Java](https://www.oracle.com/java/technologies/downloads/)
+- [Ensemble learning](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.1/Task1_Ensemble_Learning.R)
+- [Trained Models](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/tree/main/Task.1/Models)
 
 Task.2:
-- [Java](https://www.oracle.com/java/technologies/downloads/)
-- [Java](https://www.oracle.com/java/technologies/downloads/)
+- [Final Model 2Conv1d_BILSTM](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.2/2Conv1d_BILSTM_256_128_64_9955.py)
+- [BILSTM Grid Search](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.2/BILSTM_Grid_L2.py)
+- [Conv1d BILSTM Grid Search](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.2/Conv1d_BILSTM_Grid.py)
+- [Baselines H2o Model: Trained Model](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.2/Fast_Load_h2oModel.Rmd)
+- [Baselines H2o Model: Training Process](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Task.2/Training_Process_Ensemble.R)
 
 ## Task.1 - Binary Classification
 
@@ -23,7 +26,13 @@ Requirements for the R packages, Java envirnoment, and Python
 
 ### Packages Installing
 
+    ## R
     install.packages('h2o')
+    
+    ## Python
+    !pip install keras
+    !pip install plot_keras_history
+    !pip install tensorflow
 
 ### Model training
 
