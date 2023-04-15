@@ -1,15 +1,24 @@
-# BIOSTAT626-Midterm01
+# BIOSTAT626-Midterm01 (Task.1: 100%, Task.2: 98.2%)
 
+## Fast reproduce: 
+*Tips:* LSTM/BILSTM training will be time consuming. You can directly load the model that I have already trained or you can reproduce my training process in the python code. 
+
+Task.1: 
+- [Java](https://www.oracle.com/java/technologies/downloads/)
+- [Java](https://www.oracle.com/java/technologies/downloads/)
+
+Task.2:
+- [Java](https://www.oracle.com/java/technologies/downloads/)
+- [Java](https://www.oracle.com/java/technologies/downloads/)
 
 ## Task.1 - Binary Classification
 
-
-
 ### Prerequisites
 
-Requirements for the R packages and Java envirnoment
+Requirements for the R packages, Java envirnoment, and Python
 - [Java](https://www.oracle.com/java/technologies/downloads/)
 - [H2O](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/welcome.html)
+- keras & tensorflow
 
 ### Packages Installing
 
@@ -85,9 +94,7 @@ Taking the randomforest, gradient boosting, and Feedforward neural network train
                                 metalearner_algorithm = 'deeplearning'
                                 )
 
-To better fit the model, here I do not use 10-fold cross-validation to train the stacked ensemble model. The performance of this model is listed below:
-
-![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/stack.png)
+To better fit the model, here I do not use 10-fold cross-validation to train the stacked ensemble model. This model can fit the training dataset perfectly with accuracy = 1. Also, it achieves accuracy=1 in the testing dataset. 
 
 **Performance on the Leaderboard**: This stakced ensemble model achieves 100% accuracy on the testing dataset. The upload document is named as: binary_Ayakawhen.txt
 
@@ -126,17 +133,21 @@ The baseline models here are much similar with the structure in the Task.1. Rand
     <img src="https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/H2o_Model_Logloss.png" width="700" height="500">
 </p>
 
-**Why stakced ensemble learning is not choose as final model:** Based on the model above, we could easily find that some baselearner is overfitting. Since I didn't do any feature selection here, this result is expected. Choosing baselearners (GBM, RF, DL, DL+RF) as final model may have poor generalization ability since the performance on training dataset is deceptive. Also, the overfitting problem on baselearner will influence the stakced ensemble learning. If one baselearner is overfitting, metaleaner will ignore other models and put too much weight on that model.
+**Why stakced ensemble learning is not choose as final model:** 
+
+Based on the model above, we could easily find that some baselearner is overfitting. Since I didn't do any feature selection here, this result is expected. Choosing baselearners (GBM, RF, DL, DL+RF) as final model may have poor generalization ability since the performance on training dataset is deceptive. Also, the overfitting problem on baselearner will influence the stakced ensemble learning. If one baselearner is overfitting, metaleaner will ignore other models and put too much weight on that model.
 
 **(2) LSTM/BILSTM**
-By the Sequential Property in the training dataset, I decide to apply LSTM/BILSTM. 
 
+By the Sequential Property in the training dataset, I decide to apply LSTM/BILSTM. A grid-search method is applied to find the optimal hyperparameters of each LSTM/BILSTM. Since the training process is too much time-consuming, all the models are stored directly in the Task.2/LSTMGrid/. The final performance of each model in validation dataset were named in the file names. Details in the rule of each model's name is written in the report. Taken one model as an example: 
 
-**(3) Conv1D+LSTM**
-Hard to become convergent. 
-
+        model = keras.models.load_model('E:/Biostatistics Master/BIOSTAT626/Midterm1/LSTM_grid/Final/BILSTM_15_64_10_1_0.9897.h5')
+        
 
 **3. Final model - 2Conv1D_LSTM**
+
+The final model combines two Convolution 1D layers with a LSTM. It achieves the highest accuracy in the validation dataset of accuracy of 99.55%. This model also achieves 98.2% accuracy in the testing dataset. 
+
 ![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/Conv1d_LSTM.jpg)
 
 
