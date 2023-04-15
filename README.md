@@ -150,7 +150,7 @@ Based on the model above, we could easily find that some baselearner is overfitt
 
 **(2) LSTM/BILSTM**
 
-By the Sequential Property in the training dataset, I decide to apply LSTM/BILSTM. A grid-search method is applied to find the optimal hyperparameters of each LSTM/BILSTM. Since the training process is too much time-consuming, all the models are stored directly in the Task.2/LSTMGrid/. The final performance of each model in validation dataset were named in the file names. Details in the rule of each model's name is written in the report. Taken one model as an example: 
+By the Sequential Property in the training dataset, I decide to apply LSTM/BILSTM. A grid-search method is applied to find the optimal hyperparameters of each LSTM/BILSTM. Since the training process is too much time-consuming, all the models are stored directly in the [LSTMGrid](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/tree/main/LSTM_Grid). You can load the trained model below: 
 
         model = keras.models.load_model('E:/Biostatistics Master/BIOSTAT626/Midterm1/LSTM_grid/Final/BILSTM_15_64_10_1_0.9897.h5')
         
