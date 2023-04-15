@@ -39,7 +39,7 @@ Requirements for the R packages, Java envirnoment, and Python
 
 **(1) Baseline model**
 
-There are three baseline models in this task. They are randomforest, gradient boosting tree,feedforward neural network, logistic regression, and naiveBayes. 
+There are five baseline models in this task. They are randomforest, gradient boosting tree,feedforward neural network, logistic regression, and naiveBayes. 
 The final is a stacked ensemble learning using randomforest, grandient boosting tree, and feedforward neural network as base models with neural network as
 metalearner. 
 
