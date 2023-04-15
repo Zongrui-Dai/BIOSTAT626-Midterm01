@@ -19,6 +19,7 @@ Requirements for the R packages, Java envirnoment, and Python
 - [Java](https://www.oracle.com/java/technologies/downloads/)
 - [H2O](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/welcome.html)
 - keras & tensorflow
+- plot_keras_history
 
 ### Packages Installing
 
