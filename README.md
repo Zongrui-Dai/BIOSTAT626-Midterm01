@@ -87,7 +87,7 @@ Taking the randomforest, gradient boosting, and Feedforward neural network train
                                 metalearner_algorithm = 'deeplearning'
                                 )
 
-To better fit the model, here I do not use 10-fold cross-validation to train the ensemble model. The performance of this model is listed below:
+To better fit the model, here I do not use 10-fold cross-validation to train the stacked ensemble model. The performance of this model is listed below:
 
 ![Image text](https://github.com/Zongrui-Dai/BIOSTAT626-Midterm01/blob/main/stack.png)
 
