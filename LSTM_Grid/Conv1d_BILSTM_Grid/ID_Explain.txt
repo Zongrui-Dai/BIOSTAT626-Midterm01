@@ -1,0 +1,7 @@
+Conv1d_BILSTM_20_32_16_50_0.9806
+
+20：Time Steps
+32: Units Number in BILSTM layers
+16: kernel size of the convolution 1d layers
+50: lambda value*1000 in l2 penalty
+0.9806: The best performance of accuracy in Validation dataset

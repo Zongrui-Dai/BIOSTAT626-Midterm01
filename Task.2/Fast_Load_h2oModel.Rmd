@@ -1,0 +1,117 @@
+---
+title: "Fast_Loading_Ensemble_learning"
+author: "Zongrui Dai"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+library(h2o)
+library(ggplot2)
+
+Sys.setenv(JAVA_HOME="D:/Java")
+setwd('E:/Biostatistics Master/BIOSTAT626/Midterm1')
+training<-read.table('training_data.txt',head=T)
+testing<-read.table('test_data.txt',head=T)
+```
+
+## Binary classification
+```{r}
+training_muticlass<-training
+y<-training_muticlass$activity
+y[y>=7]=7
+training_muticlass$y<-as.factor(y)
+
+y<-training_muticlass$y
+ymatrix<-matrix(y,ncol = 3,byrow = T)
+
+y <- "y"
+x <- setdiff(names(training_muticlass), c('activity','subject','y'))
+testing<-as.h2o(testing)
+training_muticlass<-as.h2o(training_muticlass)
+```
+
+## Loading the baseline model GBM
+```{r}
+h2o.init()
+GBM <- h2o.loadModel('Multi_gbm/GBM_model_R_1679631418183_16')
+GBM@model$cross_validation_metrics_summary
+```
+
+## Loading the baseline model Randomforest model
+```{r}
+h2o.init()
+RF <- h2o.loadModel('Multi_rf/DRF_model_R_1679631418183_17')
+RF@model$cross_validation_metrics_summary
+```
+
+## Loading the baseline model GBM
+```{r}
+h2o.init()
+DL <- h2o.loadModel('Multi_dl/DeepLearning_model_R_1679631418183_18')
+DL@model$cross_validation_metrics_summary
+```
+
+## Loading the Stacked Ensemble model
+```{r}
+h2o.init()
+Ensemble <- h2o.loadModel('Multi_ensemble/StackedEnsemble_model_R_1681505805640_7')
+Ensemble@model
+```
+
+## Loading the Automl
+```{r}
+h2o.init()
+Automl <- h2o.loadModel('Stack_Mutiml/StackedEnsemble_AllModels_1_AutoML_1_20230315_232241')
+Automl@model$cross_validation_metrics_summary
+```
+
+## Combine results
+```{r}
+GBM_CV<-data.frame(GBM@model$cross_validation_metrics_summary)[c(1,12,9,5),1]
+RF_CV<-data.frame(RF@model$cross_validation_metrics_summary)[c(1,12,9,5),1]
+DL_CV<-data.frame(DL@model$cross_validation_metrics_summary)[c(1,12,9,5),1]
+# EN_CV<-data.frame(Ensemble@model$cross_validation_metrics_summary)[c(1,2,6,9),1]
+AM_CV<-data.frame(Automl@model$cross_validation_metrics_summary)[c(1,14,9,5),1]
+
+Results<-data.frame(GBM_CV,RF_CV,DL_CV,AM_CV)
+rownames(Results)<-c('Accuracy','RMSE','MSE','Logloss')
+print(Results)
+```
+
+## Boxplot for Accuracy
+```{r}
+library(ggstatsplot)
+GBM_ACC<-as.numeric(GBM@model$cross_validation_metrics_summary[1,3:12])
+RF_ACC<-as.numeric(RF@model$cross_validation_metrics_summary[1,3:12])
+DL_ACC<-as.numeric(DL@model$cross_validation_metrics_summary[1,3:12])
+AM_ACC<-as.numeric(Automl@model$cross_validation_metrics_summary[1,3:12])
+acc<-c(GBM_ACC,RF_ACC,DL_ACC,AM_ACC)
+Model<-c(rep('GBM',10),
+         rep('RF',10),
+         rep('DL',10),
+         rep('AutoML',10))
+
+Results<-data.frame(acc,Model)
+ggbetweenstats(Results, Model, acc)
+```
+
+## Boxplot for Logloss
+```{r}
+library(ggstatsplot)
+GBM_Logloss<-as.numeric(GBM@model$cross_validation_metrics_summary[5,3:12])
+RF_Logloss<-as.numeric(RF@model$cross_validation_metrics_summary[5,3:12])
+DL_Logloss<-as.numeric(DL@model$cross_validation_metrics_summary[5,3:12])
+AM_Logloss<-as.numeric(Automl@model$cross_validation_metrics_summary[5,3:12])
+Logloss<-c(GBM_Logloss,RF_Logloss,DL_Logloss,AM_Logloss)
+Model<-c(rep('GBM',10),
+         rep('RF',10),
+         rep('DL',10),
+         rep('AutoML',10))
+
+Results<-data.frame(Logloss,Model)
+ggbetweenstats(Results, Model, Logloss)
+```
+
+
+

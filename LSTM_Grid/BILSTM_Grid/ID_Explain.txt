@@ -1,0 +1,7 @@
+BILSTM_9_32_10_64_0.9639
+
+9：Time Steps
+32: Units Number in BILSTM layers
+10: dropout rate*100
+64: Batch Size
+0.9639: The best performance of accuracy in Validation dataset
